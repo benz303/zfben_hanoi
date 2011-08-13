@@ -118,7 +118,9 @@ class JavaScriptTestTask < ::Rake::TaskLib
     def setup_mount_paths
       mount "/",            assets_directory
       mount "/test",        temp_directory
-      mount "/javascripts", sources_directory
+      mount "/javascripts", File.join(sources_directory, 'javascripts')
+      mount "/stylesheets", File.join(sources_directory, 'stylesheets')
+      mount "/images",      File.join(sources_directory, 'images')
     end
 
     def setup_browsers(browsers)

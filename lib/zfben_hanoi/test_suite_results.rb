@@ -10,7 +10,7 @@ class TestSuiteResults
     @total += result.total
     @passed += result.passed
     @failed += result.failed
-    @filed_files.push(result.filename) if result.failed?
+    @failed_files.push(result.filename) if result.failed?
   end
   
   def failed?
