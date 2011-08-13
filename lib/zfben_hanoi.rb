@@ -1,16 +1,8 @@
 require 'erb'
 require 'webrick'
 require 'rake/tasklib'
-require './zfben_hanoi/webrick'
-require './zfben_hanoi/browser'
-require './zfben_hanoi/browsers/chrome'
-require './zfben_hanoi/browsers/firefox'
-require './zfben_hanoi/browsers/internet_explorer'
-require './zfben_hanoi/browsers/konqueror'
-require './zfben_hanoi/browsers/webkit'
-require './zfben_hanoi/browsers/safari'
-require './zfben_hanoi/browsers/opera'
-require './zfben_hanoi/test_case'
-require './zfben_hanoi/test_results'
-require './zfben_hanoi/test_suite_results'
-require './zfben_hanoi/javascript_test_task'
+
+path = File.realpath(File.join(File.dirname(__FILE__), 'zfben_hanoi'))
+['webrick.rb', 'browser.rb', 'browsers/firefox.rb', 'test_case.rb', 'test_results.rb', 'test_suite_results.rb', 'javascript_test_task.rb'].each do |f|
+  require File.join(path, f)
+end

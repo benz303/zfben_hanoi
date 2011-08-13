@@ -1,5 +1,5 @@
-require "rubygems"
-require "hanoi"
+require 'rubygems'
+require 'zfben_hanoi'
 
 namespace :test do
   desc "Runs all the JavaScript tests and collects the results"
