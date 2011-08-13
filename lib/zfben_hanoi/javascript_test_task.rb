@@ -1,5 +1,5 @@
 class JavaScriptTestTask < ::Rake::TaskLib
-  BROWSERS = %w( chrome safari firefox ie konqueror opera webkit ).freeze
+  BROWSERS = %w( firefox ).freeze
   attr_reader :sources_directory
 
   def initialize(name = :test)
@@ -45,7 +45,7 @@ class JavaScriptTestTask < ::Rake::TaskLib
 
           print "\nFinished in #{Time.now - t0} seconds."
           print @test_suite_results
-          browser.teardown
+          browser.teardown unless @test_suite_results.failed?
         else
           puts "\nSkipping #{browser}, not supported on this OS or not installed."
         end
@@ -55,7 +55,7 @@ class JavaScriptTestTask < ::Rake::TaskLib
       @server.shutdown
       t.join
 
-      exit 1 if @test_suite_results.failure? || @test_suite_results.error?
+      exit 1 if @test_suite_results.failed?
     end
   end
 
@@ -90,20 +90,8 @@ class JavaScriptTestTask < ::Rake::TaskLib
   def browser(browser)
     browser =
       case(browser)
-        when :chrome
-          Chrome.new
         when :firefox
           Firefox.new
-        when :safari
-          Safari.new
-        when :ie
-          InternetExplorer.new
-        when :konqueror
-          Konqueror.new
-        when :opera
-          Opera.new
-        when :webkit
-          Webkit.new
         else
           browser
       end
