@@ -7,7 +7,7 @@
 ## Crash Course
 
     zfben_hanoi         # prepare the target directory
-    rake test:js  # run the tests
+    rake test:js        # run the tests
 
 ## How To Use
 
@@ -23,7 +23,7 @@ You need a valid [Rake](http://rake.rubyforge.org/) installation to run your tes
 
 You can specify to run the test against one or more browsers:
 
-    rake test:js BROWSERS=firefox,ie,safari
+    rake test:js BROWSERS=firefox,chromium
 
 You can specify to run only certain tests:
 
@@ -63,11 +63,12 @@ appending the `_test.js` suffix to each test case and the `_fixtures.html` to ea
 Example:
   
     src/
-      directory_a/
-        directory_b/
-          file_3.js
-        file_2.js
-      file_1.js
+      javascript/
+        directory_a/
+          directory_b/
+            file_3.js
+          file_2.js
+        file_1.js
     test/
       javascript/
         directory_a/
@@ -91,8 +92,8 @@ You have probably noticed that `file_2_fixtures.html` is missing, this because *
 
 ### Browsers:
 
-* Chrome (Mac OS X and Windows)
 * Firefox
+* Chromium
 
 ## Repository
 
