@@ -1,5 +1,5 @@
 class JavaScriptTestTask < ::Rake::TaskLib
-  BROWSERS = %w( firefox ).freeze
+  BROWSERS = %w( firefox chromium ).freeze
   attr_reader :sources_directory
 
   def initialize(name = :test)
@@ -92,6 +92,8 @@ class JavaScriptTestTask < ::Rake::TaskLib
       case(browser)
         when :firefox
           Firefox.new
+        when :chromium
+          Chromium.new
         else
           browser
       end

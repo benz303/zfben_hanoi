@@ -4,7 +4,7 @@ class Firefox < Browser
   end
 
   def teardown
-    if macos? || linux?
+    if macos?
       system("killall firefox-bin")
     end
   end
